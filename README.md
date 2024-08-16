@@ -9,7 +9,7 @@ This project is a dynamic dashboard built using **ReactJS** and **Vite** as part
 - [📖 Project Overview](#-project-overview)
 - [✨ Features](#-features)
 - [⚙️ Installation](#%EF%B8%8F-installation)
-- [🛠️ Technologies Used](#-technologies-used)
+- [🛠️ Technologies Used](#%EF%B8%8F-technologies-used)
 - [👨‍💻 Author](#-author)
 
 ## 📖 Project Overview
