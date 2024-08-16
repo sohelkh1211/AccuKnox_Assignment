@@ -8,7 +8,6 @@ This project is a dynamic dashboard built using **ReactJS** and **Vite** as part
 
 - [📖 Project Overview](#-project-overview)
 - [✨ Features](#-features)
-- [🖼️ Demo](#-demo)
 - [⚙️ Installation](#-installation)
 - [🚀 Usage](#-usage)
 - [🛠️ Technologies Used](#-technologies-used)
@@ -31,3 +30,18 @@ The goal of this project was to create a dynamic dashboard where users can:
 - **Redux:** Utilizes the Redux library for global state management of the Dashboard component.
 - **Responsive Design:** Ensures the dashboard is accessible across all device sizes.
 
+## ⚙️ Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/dynamic-dashboard.git
+   cd dynamic-dashboard
+   ```
+2. Install dependencies
+   ```
+   npm install
+   ```
+3. Run the development server
+   ```
+   npm run dev
+   ```
