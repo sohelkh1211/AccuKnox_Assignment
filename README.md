@@ -9,7 +9,6 @@ This project is a dynamic dashboard built using **ReactJS** and **Vite** as part
 - [📖 Project Overview](#-project-overview)
 - [✨ Features](#-features)
 - [⚙️ Installation](#-installation)
-- [🚀 Usage](#-usage)
 - [🛠️ Technologies Used](#-technologies-used)
 - [👨‍💻 Author](#-author)
 
@@ -34,7 +33,7 @@ The goal of this project was to create a dynamic dashboard where users can:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/dynamic-dashboard.git
+   git clone https://github.com/sohelkh1211/AccuKnox_Assignment.git
    cd dynamic-dashboard
    ```
 2. Install dependencies
@@ -45,3 +44,11 @@ The goal of this project was to create a dynamic dashboard where users can:
    ```
    npm run dev
    ```
+
+## 🛠️ Technologies Used
+
+- **ReactJS** - A JavaScript library for building user interfaces.
+- **Vite** - A next-generation front-end tool for development and build.
+- **Tailwind CSS** - A utility-first CSS framework for styling
+  **Redux** - A JS library for predictable and maintainable global state management
+- **JavaScript (ES6+)** - For functionality and logic implementation.
