@@ -52,3 +52,9 @@ The goal of this project was to create a dynamic dashboard where users can:
 - **Tailwind CSS** - A utility-first CSS framework for styling
   **Redux** - A JS library for predictable and maintainable global state management
 - **JavaScript (ES6+)** - For functionality and logic implementation.
+
+## 👨‍💻 Author
+
+- Mohammed Sohel Khan
+  1. [LinkedIn](https://www.linkedin.com/in/mohammed-sohel-khan-452479259/)
+  2. [Github](https://github.com/sohelkh1211)
