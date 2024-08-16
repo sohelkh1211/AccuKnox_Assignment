@@ -2,13 +2,13 @@
 
 This project is a dynamic dashboard built using **ReactJS** and **Vite** as part of the AccuKnox Assignment. The dashboard allows users to add and remove widgets dynamically, and search through a list of all widgets. The JSON structure is used to create and manage the dashboard content.
 
-![image](https://github.com/user-attachments/assets/6caebf53-e7bb-4fdd-b6f4-f53ddcea1440)
+![image](https://github.com/user-attachments/assets/6dc10260-c187-4411-ad73-df555e0b9828)
 
 ## 📋 Table of Contents
 
 - [📖 Project Overview](#-project-overview)
 - [✨ Features](#-features)
-- [⚙️ Installation](#-installation)
+- [⚙️ Installation](#%EF%B8%8F-installation)
 - [🛠️ Technologies Used](#-technologies-used)
 - [👨‍💻 Author](#-author)
 
