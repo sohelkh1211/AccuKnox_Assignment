@@ -34,7 +34,7 @@ The goal of this project was to create a dynamic dashboard where users can:
 1. Clone the repository:
    ```bash
    git clone https://github.com/sohelkh1211/AccuKnox_Assignment.git
-   cd dynamic-dashboard
+   cd AccuKnox_Assignment
    ```
 2. Install dependencies
    ```
