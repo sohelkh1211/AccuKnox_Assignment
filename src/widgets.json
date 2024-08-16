@@ -1,0 +1,56 @@
+{
+    "categories": [
+        {
+            "name": "CSPM Executive Dashboard",
+            "widgets": [
+                {
+                    "name": "Cloud Accounts",
+                    "text": "This widget displays a list of all cloud accounts linked to the organization."
+                },
+                {
+                    "name": "Cloud Account Risk Assessment",
+                    "text": "This widget provides an assessment of risks associated with each cloud account"
+                }
+            ]
+        },
+        {
+            "name": "CWPP Dashboard",
+            "widgets": [
+                {
+                    "name": "Workload Security Status",
+                    "text": "Provides a real-time overview of the security status of all workloads across cloud environments, identifying any at-risk workloads."
+                },
+                {
+                    "name": "Vulnerability Scan Results",
+                    "text": "Displays the results of the latest vulnerability scans, highlighting critical vulnerabilities that need immediate attention."
+                }
+            ]
+        },
+        {
+            "name": "Registry Scan",
+            "widgets": [
+                {
+                    "name": "Image Risk Assessment",
+                    "text": "Displays a risk assessment for container images based on identified vulnerabilities, with scores or ratings indicating the overall risk level of each image"
+                },
+                {
+                    "name": "Image Security Issues",
+                    "text": "Lists detected security issues within container images, including specific vulnerabilities, misconfigurations, and other security flaws."
+                }
+            ]
+        },
+        {
+            "name": "IAM Security",
+            "widgets": [
+                {
+                    "name": "User Activity Monitoring",
+                    "text": "Tracks user activities in the cloud environment, highlighting any suspicious or unauthorized actions."
+                },
+                {
+                    "name": "IAM Policy Violations",
+                    "text": "Lists detected violations of IAM policies, such as unauthorized role assignments or access to sensitive resources."
+                }
+            ]
+        }
+    ]
+}

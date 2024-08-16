@@ -1,0 +1,30 @@
+// CSPM Executive Dashboard
+{
+    "name": "Compliance Status",
+    "text": "Overview of the compliance status of all cloud services, including current risk levels and areas of concern."
+}
+
+// CWPP Dashboard
+{
+    "name": "Threat Detection Alerts",
+    "text": "Lists recent threat detection alerts, including potential intrusions and malicious activity targeting cloud workloads."
+}
+
+// Registry Scan
+{
+    "name": "Top Vulnerable Images",
+    "text": "Highlights the container images with the most severe vulnerabilities, ranked by risk level or potential impact."
+}
+
+// IAM Security (Identity and Access Management)
+{
+    "name": "Access Anomalies",
+    "text": "Detects unusual access patterns that could indicate compromised credentials"
+}
+
+// New Category
+// Network Security
+{
+    "name": "Threat Detection",
+    "text": "Displays detected network-based threats, such as DDoS attacks, unauthorized access attempts, or malicious traffic."
+}
