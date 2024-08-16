@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Dashboard from './dashboard';
+import Dashboard from './Dashboard';
 import { Toaster } from 'react-hot-toast';
 
 function App() {
