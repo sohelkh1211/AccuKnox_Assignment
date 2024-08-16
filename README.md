@@ -50,7 +50,7 @@ The goal of this project was to create a dynamic dashboard where users can:
 - **ReactJS** - A JavaScript library for building user interfaces.
 - **Vite** - A next-generation front-end tool for development and build.
 - **Tailwind CSS** - A utility-first CSS framework for styling
-  **Redux** - A JS library for predictable and maintainable global state management
+- **Redux** - A JS library for predictable and maintainable global state management
 - **JavaScript (ES6+)** - For functionality and logic implementation.
 
 ## 👨‍💻 Author
