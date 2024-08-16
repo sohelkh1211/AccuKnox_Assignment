@@ -40,6 +40,9 @@ const Dashboard = () => {
     // To get the index of selected_widget
     const [selected_widget, setSelected_widget] = useState({});
 
+    // For searching specific widget
+    const [searchTerm, setSearchTerm] = useState('');
+
     // To get data of new_widget
     const [new_widget, setNew_widget] = useState({
         "cat_index": -1,
@@ -92,7 +95,7 @@ const Dashboard = () => {
             "text": ""
         });
         setVisible(false);
-        console.log(categories);
+        // console.log(categories);
     }
 
     const handleCategorySave = (e) => {
@@ -128,15 +131,78 @@ const Dashboard = () => {
         toast.success("Category Added");
     }
 
+    const handleSearch = () => {
+        // Create array of categories with widgets objects
+        // [
+        //       {
+        //         name: 'Cloud Accounts',
+        //         text: 'This widget displays a list of all cloud accounts linked to the organization.'
+        //       },
+        //       {
+        //         name: 'Cloud Account Risk Assessment',
+        //         text: 'This widget provides an assessment of risks associated with each cloud account'
+        //       }
+        //       {
+        //         name: 'Workload Security Status',
+        //         text: 'Provides a real-time overview of the security status of all workloads across cloud environments, identifying any at-risk workloads.'
+        //       },
+        //       {
+        //         name: 'Vulnerability Scan Results',
+        //         text: 'Displays the results of the latest vulnerability scans, highlighting critical vulnerabilities that need immediate attention.'
+        //       }
+        //     ...
+        // ]
+
+        const allWidgets = categories.flatMap(category => category.widgets);
+
+        // required_widget is an array that holds searched widget
+        const required_widget = allWidgets.filter((widget) => 
+            widget.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+
+        let cat_index = -1;
+        let wid_index = -1;
+
+        for (let index = 0; index < categories.length; index++) {
+            const category = categories[index];
+            const widget_index = category.widgets.indexOf(required_widget[0]);
+            
+            if (widget_index !== -1) {
+                cat_index = index;
+                wid_index = widget_index;
+                break;
+            }
+        }
+
+        // If searched widget name found then scroll to that widget and border that widget.
+        if( cat_index !== -1 ){
+            window.scrollTo({
+                top: document.getElementById(`cat${cat_index}`).offsetTop,
+                behavior: 'smooth'
+            });
+
+            document.getElementById(`widget_${required_widget[0].name}`).style.border = "solid 3px red";
+        } else { // if cat_index === -1 that means widget not found
+            toast.error(`${searchTerm} Not found`);
+            setSearchTerm('');
+            return;
+        }
+
+        setSearchTerm('');
+        setTimeout(() => {
+            document.getElementById(`widget_${required_widget[0].name}`).style.border = "none";
+        }, 1400);
+    }
+
     return (
         <>
-            <nav className="flex sm:px-6 xs:px-4 py-1 items-center justify-between sm:gap-x-0 xs:gap-x-2 bg-white border border-b-gray-300">
+            <nav className="fixed top-0 w-full flex sm:px-6 xs:px-4 py-1 items-center justify-between sm:gap-x-0 xs:gap-x-2 bg-white border border-b-gray-300 z-10">
                 <div className="flex">
                     <p className="inter lg:text-[16px] md:text-[15px] sm:text-[15px] xs:text-[14px] text-cyan-800 font-bold"><span className="text-gray-500 inter font-light">Home {`>`}</span> Dashboard V2</p>
                 </div>
-                <div className='sm:flex xs:hidden'>
+                <div className='sm:flex xs:hidden '>
                     <SearchIcon sx={{ width: { md: 'auto', sm: '22px' } }} className='absolute md:ml-[0.2rem] sm:ml-[1.9rem] top-[7px] text-gray-400' />
-                    <input type="text" placeholder="Search" className="border border-sky-300 caret-slate-400 md:w-auto sm:w-[80%] md:mx-0 sm:mx-auto rounded-md md:px-7 sm:px-6 py-0.5 lg:text-[16px] md:text-[15px] sm:text-[15px] xs:text-[12px] outline-none" />
+                    <input type="text" placeholder="Search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") handleSearch(); }} className="border border-sky-300 caret-slate-400 md:w-auto sm:w-[80%] md:mx-0 sm:mx-auto rounded-md md:px-7 sm:px-6 py-0.5 lg:text-[16px] md:text-[15px] sm:text-[15px] xs:text-[12px] outline-none" />
                 </div>
                 <div className='flex items-center md:gap-x-4 xs:gap-x-2'>
                     <ThemeProvider theme={theme}><NotificationsActiveIcon sx={{ width: { lg: '24px', md: '22px', sm: '20px', xs: '20px' } }} className=' text-gray-400 cursor-pointer' /></ThemeProvider>
@@ -146,13 +212,13 @@ const Dashboard = () => {
             </nav>
 
             {/* Search bar for xs devices */}
-            <div className='sm:hidden xs:flex mt-6'>
+            <div className='sm:hidden xs:flex mt-12'>
                 <SearchIcon sx={{ width: { sm: 'auto' } }} className='absolute mt-1 ml-[5.5%] text-gray-400' />
                 <input type="text" placeholder="Search" className="mx-auto w-[90%] px-7 py-[0.15rem] border border-sky-300 caret-slate-400 rounded-md outline-none" />
             </div>
 
             {/* CNAPP Dashboard */}
-            <div className='flex sm:flex-row xs:flex-col xs:gap-y-2 items-center justify-between sm:mt-10 xs:mt-4 sm:px-6 xs:px-4'>
+            <div className='flex sm:flex-row xs:flex-col xs:gap-y-2 items-center justify-between sm:mt-20 xs:mt-5 sm:px-6 xs:px-[20px]'>
                 <h1 className='roboto font-bold sm:self-center xs:self-start lg:text-[20px] md:text-[19px] sm:text-[18px] xs:text-[19px]'>CNAPP Dashboard</h1>
                 <div className='flex gap-x-2 sm:self-end xs:self-start'>
                     <button className='flex items-center border border-gray-400 bg-white rounded-md' onClick={() => setCategory_visible(!category_visible)}>
@@ -174,26 +240,26 @@ const Dashboard = () => {
             </div>
 
             {categories.map((category, cat_index) => (
-                <div key={`cat${cat_index}`} className='flex flex-col mt-6 px-8 bg-sky-100'>
+                <div id={`cat${cat_index}`} key={`cat${cat_index}`} className='flex flex-col mt-6 sm:px-8 xs:px-7 bg-sky-100'>
                     <h1 className='roboto font-bold text-[18px]'>{category.name}</h1>
 
                     {/* Widgets */}
-                    <div className='flex flex-row gap-x-4'>
+                    <div className='flex flex-row gap-x-4 overflow-auto'>
 
                         {category.widgets.map((widget, index) => (
-                            <div key={`widget_${index}`} className='flex flex-col flex-shrink-0 w-[25%] p-2 bg-white border shadow-lg rounded-lg'>
+                            <div id={`widget_${widget.name}`} key={`widget_${index}`} className='flex flex-col flex-shrink-0 sm:w-[300px] xs:w-[200px] p-2 bg-white border shadow-lg rounded-lg'>
                                 <div className='flex justify-between items-center'>
-                                    <h1 className='roboto font-bold text-[15px]'>{widget.name}</h1>
-                                    <CloseIcon sx={{ width: '20px' }} className='cursor-pointer' onClick={() => { setRemove_visible(!remove_visible); setSelected_widget({ "cat_index": cat_index, "wid_index": index }) }} />
+                                    <h1 className='roboto font-bold sm:text-[15px] xs:text-[14px]'>{widget.name}</h1>
+                                    <ThemeProvider theme={theme}><CloseIcon sx={{ width: { sm: '20px' ,xs: '16px' } }} className='cursor-pointer' onClick={() => { setRemove_visible(!remove_visible); setSelected_widget({ "cat_index": cat_index, "wid_index": index }) }} /></ThemeProvider>
                                 </div>
                                 <div className='flex justify-center items-center h-full'>
-                                    <p className='roboto text-center text-[14px] px-2'>{widget.text}</p>
+                                    <p className='roboto text-center sm:text-[14px] xs:text-[12px] px-2'>{widget.text}</p>
                                 </div>
                             </div>
                         ))}
 
                         {/* Common for all categories */}
-                        <div className='flex flex-shrink-0 w-[25%] h-[200px] bg-white justify-center items-center border shadow-lg rounded-lg'>
+                        <div className='flex flex-shrink-0 sm:w-[300px] xs:w-[200px] sm:h-[200px] xs:h-[150px] bg-white justify-center items-center border shadow-lg rounded-lg'>
                             <button className='flex items-center border border-gray-400 bg-white rounded-md' onClick={() => { setVisible(!visible); setNew_widget({ ...new_widget, "cat_index": cat_index }) }}>
                                 <p className='lg:text-[15px] sm:text-[14px] xs:text-[13px] text-gray-500 sm:px-3 xs:px-2 py-0.5 lato-light'>+ Add <span className='lato-light sm:inline-block xs:hidden'>Widget &nbsp;&nbsp;</span></p>
                             </button>
